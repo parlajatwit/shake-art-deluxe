@@ -31,6 +31,7 @@
     {"id":{"name":"GMLive_thread","path":"scripts/GMLive_thread/GMLive_thread.yy",},"order":4,},
     {"id":{"name":"GMLive_nodeTools","path":"scripts/GMLive_nodeTools/GMLive_nodeTools.yy",},"order":3,},
     {"id":{"name":"GMLive_vm_call","path":"scripts/GMLive_vm_call/GMLive_vm_call.yy",},"order":6,},
+    {"id":{"name":"obj_width","path":"objects/obj_width/obj_width.yy",},"order":3,},
     {"id":{"name":"spr_val","path":"sprites/spr_val/spr_val.yy",},"order":3,},
     {"id":{"name":"GMLive_vm_init","path":"scripts/GMLive_vm_init/GMLive_vm_init.yy",},"order":7,},
     {"id":{"name":"obj_line","path":"objects/obj_line/obj_line.yy",},"order":0,},

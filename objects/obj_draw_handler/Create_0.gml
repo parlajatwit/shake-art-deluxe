@@ -13,11 +13,13 @@ hue = 255;
 sat = 0;
 val = 255;
 
+selected = false;
+
 color = make_color_hsv(hue, sat, val);
 
 settings_line = instance_create_depth(0, 0, 2, obj_line);
 settings_line.x_real = [43, 128, 213, 298];
-settings_line.y_real = [590, 590, 590, 590];
+settings_line.y_real = [530, 530, 530, 530];
 
 
 state_draw_line = function() {
@@ -66,8 +68,9 @@ state_draw_freehand = function() {
 		
 	if (mouse_check_button_pressed(mb_left)) {
 		create_line();
+		selected = true;
 	}
-	if (mouse_check_button(mb_left)) {
+	if (mouse_check_button(mb_left) && selected) {
 		current_line.x_real[curindex] = mouse_x;
 		current_line.y_real[curindex] = mouse_y;
 		if (timer < 0) {
@@ -78,6 +81,7 @@ state_draw_freehand = function() {
 	if (mouse_check_button_released(mb_left)) {
 		timer = freehand_delay;	
 		current_line = noone;
+		selected = false;
 	}
 
 	

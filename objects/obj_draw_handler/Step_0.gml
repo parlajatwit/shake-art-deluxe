@@ -6,6 +6,7 @@ if (mouse_x > 342)
 hue = obj_hue.val;
 sat = obj_sat.val;
 val = obj_val.val;
+line_thickness = obj_width.val;
 color = make_color_hsv(hue, sat, val);
 
 shake_offset = clamp(shake_offset, 0, 100);
