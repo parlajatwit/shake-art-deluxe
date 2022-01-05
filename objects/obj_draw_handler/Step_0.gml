@@ -17,9 +17,12 @@ settings_line.sh_spd = shake_speed;
 settings_line.line_width = line_thickness;
 settings_line.col = color;
 
-if (keyboard_check(vk_control) && keyboard_check_pressed(ord("Z")) && undoindex > 0) {
-	undo();
+if (keyboard_check_direct(vk_lcontrol) && keyboard_check_pressed(ord("Z"))) {
+	if (keyboard_check_direct(vk_lshift) && undoindex < array_length(undoredo))
+		redo();
+	else if (undoindex > 0 && !keyboard_check_direct(vk_lshift))
+		undo();
 }
-if (((keyboard_check(vk_control) && keyboard_check_pressed(ord("Y"))) || (keyboard_check(vk_control) && keyboard_check(vk_shift) && keyboard_check_pressed(ord("Z")))) && undoindex < array_length(undoredo)) {
+if (keyboard_check_direct(vk_lcontrol) && keyboard_check_pressed(ord("Y")) && undoindex < array_length(undoredo)) {
 	redo();
 }
