@@ -3,7 +3,7 @@ if (live_call()) return live_result;
 curindex = 0;
 current_line = noone;
 
-shake_offset = 3;
+shake_offset = 2;
 shake_speed = 1;
 line_thickness = 3;
 
@@ -18,8 +18,8 @@ selected = false;
 color = make_color_hsv(hue, sat, val);
 
 settings_line = instance_create_depth(0, 0, 2, obj_line);
-settings_line.x_real = [43, 128, 213, 298];
-settings_line.y_real = [530, 530, 530, 530];
+settings_line.x_real = [43, 170, 298];
+settings_line.y_real = [470, 470, 470];
 
 
 state_draw_line = function() {

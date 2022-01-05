@@ -10,7 +10,7 @@ line_thickness = obj_width.val;
 color = make_color_hsv(hue, sat, val);
 
 shake_offset = clamp(shake_offset, 0, 100);
-shake_speed = clamp(shake_speed, 1, 30);
+shake_speed = obj_speed.val;
 
 settings_line.sh_off = shake_offset;
 settings_line.sh_spd = shake_speed;
