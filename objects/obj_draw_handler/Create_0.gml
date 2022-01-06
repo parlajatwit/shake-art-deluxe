@@ -102,6 +102,11 @@ function create_line() {
 	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line);
 	undoredo[undoindex] = current_line;
 	undoindex++;
+	if (undoindex < array_length(undoredo)) {
+		for (i = undoindex; i < array_length(undoredo); i++)
+			instance_destroy(undoredo[i]);
+		array_resize(undoredo, undoindex);
+	}
 	current_line.col = color;
 	current_line.sh_spd = shake_speed;
 	current_line.sh_off = shake_offset;

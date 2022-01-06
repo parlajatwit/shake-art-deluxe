@@ -8,3 +8,5 @@ if (timer == 0) {
 	timer = sh_spd;
 }
 timer--;
+
+depth = y;
