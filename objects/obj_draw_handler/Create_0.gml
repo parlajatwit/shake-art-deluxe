@@ -97,6 +97,18 @@ state_draw_freehand = function() {
 	}
 }
 
+state_eraser = function() {
+	// eraser logic go here
+}
+
+state_fill = function() {
+	// fill logic go here
+}
+
+state_eyedropper = function() {
+	// eyedropper logic go here
+}
+
 function create_line() {
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line);

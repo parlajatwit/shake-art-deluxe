@@ -8,3 +8,5 @@ if (position_meeting(mouse_x, mouse_y, self)) {
 else {
 	hovered = false;
 }
+if (obj_draw_handler.state != obj_draw_handler.state_eraser)
+	selected = false;
