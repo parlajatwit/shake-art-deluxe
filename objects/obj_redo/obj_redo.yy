@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_eraser",
-    "path": "sprites/spr_eraser/spr_eraser.yy",
+    "name": "spr_undo",
+    "path": "sprites/spr_undo/spr_undo.yy",
   },
   "solid": false,
   "visible": true,
@@ -32,7 +32,7 @@
     "path": "folders/Objects/tools.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_eraser",
+  "name": "obj_redo",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -16,6 +16,7 @@ val = 255;
 selected = false;
 
 color = make_color_hsv(hue, sat, val);
+color_inverse = make_color_rgb(255 - color_get_red(color), 255 - color_get_green(color), 255 - color_get_blue(color));
 
 settings_line = instance_create_depth(0, 0, 2, obj_line);
 settings_line.x_real = [43, 170, 298];
@@ -151,4 +152,4 @@ function redo() {
 	//undoindex++;
 }
 
-state = state_draw_line;
+state = state_draw_freehand;

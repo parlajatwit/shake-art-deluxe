@@ -1,6 +1,6 @@
 if (live_call()) return live_result;
 
-selected = false;
+selected = true;
 hovered = false;
 
 timer = 0;

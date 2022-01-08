@@ -8,6 +8,7 @@ sat = obj_sat.val;
 val = obj_val.val;
 line_thickness = obj_width.val;
 color = make_color_hsv(hue, sat, val);
+color_inverse = make_color_rgb(255 - color_get_red(color), 255 - color_get_green(color), 255 - color_get_blue(color));
 
 shake_offset = clamp(shake_offset, 0, 100);
 shake_speed = obj_speed.val;
