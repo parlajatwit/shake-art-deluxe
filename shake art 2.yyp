@@ -21,6 +21,7 @@
     {"id":{"name":"GMLive_token","path":"scripts/GMLive_token/GMLive_token.yy",},"order":7,},
     {"id":{"name":"GMLive_node","path":"scripts/GMLive_node/GMLive_node.yy",},"order":2,},
     {"id":{"name":"obj_record","path":"objects/obj_record/obj_record.yy",},"order":6,},
+    {"id":{"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},"order":2,},
     {"id":{"name":"obj_speed","path":"objects/obj_speed/obj_speed.yy",},"order":4,},
     {"id":{"name":"GMLive_seekEval","path":"scripts/GMLive_seekEval/GMLive_seekEval.yy",},"order":5,},
     {"id":{"name":"GMLive_new","path":"scripts/GMLive_new/GMLive_new.yy",},"order":2,},
