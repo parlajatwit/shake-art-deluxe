@@ -14,6 +14,7 @@
 
 
 (function() {
+
 	function b64toBlob(b64Data, contentType, sliceSize) {
 		// from http://stackoverflow.com/a/16245768/5578773
 		contentType = contentType || '';
@@ -151,5 +152,5 @@
 
 		gif.render();
 	}
-		
+	
 })();

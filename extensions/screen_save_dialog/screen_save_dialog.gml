@@ -71,9 +71,3 @@ if (os_browser != browser_not_a_browser) {
 var _array = argument0, _fname = argument1, _x = argument2, _y = argument3, _width = argument4, _height = argument5;
 
 save_gif_array_js(_fname, _array, _width, _height, _x, _y, _width, _height);
-
-
-
-
-
-
