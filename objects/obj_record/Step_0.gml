@@ -5,6 +5,9 @@ if (position_meeting(mouse_x, mouse_y, self)) {
 	if (mouse_check_button_pressed(mb_left)) {
 		obj_draw_handler.state = obj_draw_handler.state_draw_freehand;
 		timer = 0;
+		if (os_browser != browser_not_a_browser) {
+			array_delete(stored_frames, 0, frame_count);
+		}
 		recording = !recording;
 	}
 }
@@ -30,9 +33,10 @@ if (recording) {
 		gif_surf = surface_create(1024, 768);
 		if (frame_count < max_frames + 1) {
 			surface_copy_part(gif_surf, 0, 0, application_surface, 342, 0, 1024, 768);
-			buffer = buffer_create(1024 * 768 * 4, buffer_fixed, 1);
+			buffer = buffer_create(1024 * 768 * 4, buffer_fast, 1);
 			buffer_get_surface(buffer, gif_surf, 0);
 			stored_frames[frame_count] = buffer_get_address(buffer);
+			buffer_delete(buffer);
 			show_debug_message(stored_frames[frame_count]);
 			frame_count++;
 		}
@@ -49,7 +53,7 @@ if (recording) {
 		// HTML5
 		if (os_browser != browser_not_a_browser) {
 			recording = false;
-			save_gif_array(stored_frames, "test.gif", 342, 0, 1024, 768);
+			save_gif_array(stored_frames, "test.gif", 0, 0, 1024, 768);
 			frame_count = 0;
 		}
 	}
