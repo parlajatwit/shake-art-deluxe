@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_col",
-    "path": "sprites/spr_col/spr_col.yy",
+    "name": "spr_eyedropper",
+    "path": "sprites/spr_eyedropper/spr_eyedropper.yy",
   },
   "solid": false,
   "visible": true,
@@ -21,16 +21,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "tools",
+    "path": "folders/Objects/tools.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_linecol",
+  "name": "obj_eyedropper",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -14,7 +14,7 @@ if (making_col) {
 		collision_objs[i] = instance_create_depth(x_real[i], y_real[i], depth+1, obj_linecol);
 		collision_objs[i].image_angle = point_direction(x_real[i], y_real[i], x_real[i+1], y_real[i+1]);
 		collision_objs[i].image_xscale = point_distance(x_real[i], y_real[i], x_real[i+1], y_real[i+1]);
-		collision_objs[i].image_yscale = (line_width/2);
+		collision_objs[i].image_yscale = (line_width/2) * 1.3; 
 	}
 	making_col = false;
 }

@@ -18,15 +18,13 @@ selected = false;
 color = make_color_hsv(hue, sat, val);
 color_inverse = make_color_rgb(255 - color_get_red(color), 255 - color_get_green(color), 255 - color_get_blue(color));
 
-/*settings_line = instance_create_depth(0, 0, 2, obj_line);
+settings_line = instance_create_depth(0, 0, 2, obj_settingsline);
 settings_line.x_real = [43, 170, 298];
 settings_line.y_real = [470, 470, 470];
-*/
+
 
 undoredo = [];
 undoindex = 0;
-
-line_depth = 0;
 
 mouse_over_line = false;
 mouse_line = noone;
@@ -112,6 +110,7 @@ state_eraser = function() {
 			instance_destroy(mouse_line.collision_objs[i]);
 		}
 		array_resize(mouse_line.collision_objs, 0);
+		undoindex--;
 		undoredo[undoindex] = mouse_line;
 		instance_deactivate_object(mouse_line);
 		mouse_line = noone;
@@ -122,18 +121,37 @@ state_eraser = function() {
 }
 
 state_fill = function() {
-	// fill logic go here
+	if (mouse_over_line && mouse_check_button_pressed(mb_left)) {
+		for (i = 0; i < array_length(mouse_line.collision_objs); i++) {
+			instance_destroy(mouse_line.collision_objs[i]);
+		}
+		array_resize(mouse_line.collision_objs, 0);
+		create_line();
+		for (i = 0; i < array_length(mouse_line.x_real); i++) {
+			current_line.x_real[i] = mouse_line.x_real[i];
+			current_line.y_real[i] = mouse_line.y_real[i];
+		}
+		instance_deactivate_object(mouse_line);
+		current_line = noone;
+		mouse_line = noone;
+		mouse_over_line = false;
+	}
 }
 
 state_eyedropper = function() {
-	// eyedropper logic go here
+	if (mouse_over_line && mouse_check_button_pressed(mb_left)) {
+		obj_hue.val = color_get_hue(mouse_line.col);
+		obj_sat.val = color_get_saturation(mouse_line.col);
+		obj_val.val = color_get_value(mouse_line.col);
+		shake_offset = mouse_line.sh_off;
+		obj_speed.val = mouse_line.sh_spd;
+		obj_width.val = mouse_line.line_width;
+	}
 }
 
 function create_line() {
-	line_depth++;
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line);
-	current_line.depth = -line_depth;
 	undoredo[undoindex] = current_line;
 	undoindex++;
 	if (undoindex < array_length(undoredo)) {
