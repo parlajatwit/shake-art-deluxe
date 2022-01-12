@@ -21,4 +21,9 @@ collision_objs = [];
 
 timer = 0;
 
+aabb_x1 = 0;
+aabb_x2 = 0;
+aabb_y1 = 0;
+aabb_y2 = 0;
+
 

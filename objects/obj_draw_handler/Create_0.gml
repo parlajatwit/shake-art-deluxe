@@ -13,6 +13,8 @@ hue = 255;
 sat = 0;
 val = 255;
 
+total_points = 0;
+
 selected = false;
 
 color = make_color_hsv(hue, sat, val);
@@ -233,8 +235,6 @@ function undo() {
 		undoredo[undoindex-1].making_col = true;
 	}
 	undoindex--
-	//undoredo[undoindex-1].enabled = !undoredo[undoindex-1].enabled;
-	//undoindex--;
 }
 
 function redo() {
@@ -250,8 +250,6 @@ function redo() {
 		undoredo[undoindex].making_col = true;
 	}
 	undoindex++;
-	//undoredo[undoindex].enabled = !undoredo[undoindex].enabled;
-	//undoindex++;
 }
 
 state = state_draw_freehand;
