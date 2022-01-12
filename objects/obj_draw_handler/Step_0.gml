@@ -8,7 +8,9 @@ sat = obj_sat.val;
 val = obj_val.val;
 line_thickness = obj_width.val;
 color = make_color_hsv(hue, sat, val);
+color_limited = make_color_hsv(hue, sat, 255);
 color_inverse = make_color_rgb(255 - color_get_red(color), 255 - color_get_green(color), 255 - color_get_blue(color));
+color_inverse_limited = make_color_hsv(color_get_hue(color_inverse), color_get_saturation(color_inverse), 255);
 
 shake_offset = clamp(shake_offset, 0, 100);
 shake_speed = obj_speed.val;
@@ -18,12 +20,12 @@ settings_line.sh_spd = shake_speed;
 settings_line.line_width = line_thickness;
 settings_line.col = color;
 
-if (keyboard_check_direct(vk_lcontrol) && keyboard_check_pressed(ord("Z"))) {
-	if (keyboard_check_direct(vk_lshift) && undoindex < array_length(undoredo))
+if (keyboard_check(vk_control) && keyboard_check_pressed(ord("Z"))) {
+	if (keyboard_check(vk_shift) && undoindex < array_length(undoredo))
 		redo();
-	else if (undoindex > 0 && !keyboard_check_direct(vk_lshift))
+	else if (undoindex > 0 && !keyboard_check(vk_shift))
 		undo();
 }
-if (keyboard_check_direct(vk_lcontrol) && keyboard_check_pressed(ord("Y")) && undoindex < array_length(undoredo)) {
+if (keyboard_check(vk_control) && keyboard_check_pressed(ord("Y")) && undoindex < array_length(undoredo)) {
 	redo();
 }

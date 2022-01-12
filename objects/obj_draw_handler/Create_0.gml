@@ -16,7 +16,9 @@ val = 255;
 selected = false;
 
 color = make_color_hsv(hue, sat, val);
+color_limited = make_color_hsv(hue, sat, 255);
 color_inverse = make_color_rgb(255 - color_get_red(color), 255 - color_get_green(color), 255 - color_get_blue(color));
+color_inverse_limited = make_color_hsv(color_get_hue(color_inverse), color_get_saturation(color_inverse), 255);
 
 settings_line = instance_create_depth(0, 0, 2, obj_settingsline);
 settings_line.x_real = [43, 170, 298];
@@ -29,6 +31,7 @@ undoindex = 0;
 mouse_over_line = false;
 mouse_line = noone;
 
+surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 
 state_draw_line = function() {
 	if (mouse_wheel_up())
@@ -91,7 +94,7 @@ state_draw_freehand = function() {
 			timer = freehand_delay;
 		}
 	}
-	if (mouse_check_button_released(mb_left)) {
+	if (mouse_check_button_released(mb_left) && selected) {
 		timer = freehand_delay;
 		current_line.making_col = true;
 		current_line = noone;
@@ -121,20 +124,29 @@ state_eraser = function() {
 }
 
 state_fill = function() {
+	filled_line = false;
 	if (mouse_over_line && mouse_check_button_pressed(mb_left)) {
 		for (i = 0; i < array_length(mouse_line.collision_objs); i++) {
 			instance_destroy(mouse_line.collision_objs[i]);
 		}
 		array_resize(mouse_line.collision_objs, 0);
+		undoredo[undoindex] = mouse_line;
+		undoindex++;
 		create_line();
 		for (i = 0; i < array_length(mouse_line.x_real); i++) {
 			current_line.x_real[i] = mouse_line.x_real[i];
 			current_line.y_real[i] = mouse_line.y_real[i];
 		}
+		current_line.making_col = true;
 		instance_deactivate_object(mouse_line);
+		mouse_over_line = false;
 		current_line = noone;
 		mouse_line = noone;
-		mouse_over_line = false;
+		filled_line = true;
+	}
+	
+	if (!mouse_over_line && mouse_check_button_pressed(mb_left) && !filled_line) {
+		layer_background_blend(0, color);
 	}
 }
 
@@ -149,9 +161,33 @@ state_eyedropper = function() {
 	}
 }
 
+state_linebehind = function() {
+	timer--;
+	
+	if (mouse_check_button_pressed(mb_left)) {
+		create_line_noshake();
+		selected = true;
+	}
+	if (mouse_check_button(mb_left) && selected) {
+		current_line.x_real[curindex] = mouse_x;
+		current_line.y_real[curindex] = mouse_y;
+		if (timer < 0) {
+			curindex++;
+			timer = freehand_delay;
+		}
+	}
+	if (mouse_check_button_released(mb_left) && selected) {
+		timer = freehand_delay;
+		current_line.making_col = true;
+		current_line = noone;
+		selected = false;
+	}
+}
+
 function create_line() {
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line);
+	current_line.depth = -undoindex;
 	undoredo[undoindex] = current_line;
 	undoindex++;
 	if (undoindex < array_length(undoredo)) {
@@ -162,6 +198,23 @@ function create_line() {
 	current_line.col = color;
 	current_line.sh_spd = shake_speed;
 	current_line.sh_off = shake_offset;
+	current_line.line_width = line_thickness;
+	current_line.x_real[0] = mouse_x;
+	current_line.y_real[0] = mouse_y;
+}
+
+function create_line_noshake() {
+	curindex = 1;
+	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line_noshake);
+	current_line.depth = undoindex;
+	undoredo[undoindex] = current_line;
+	undoindex++;
+	if (undoindex < array_length(undoredo)) {
+		for (i = undoindex; i < array_length(undoredo); i++)
+			instance_destroy(undoredo[i]);
+		array_resize(undoredo, undoindex);
+	}
+	current_line.col = color;
 	current_line.line_width = line_thickness;
 	current_line.x_real[0] = mouse_x;
 	current_line.y_real[0] = mouse_y;

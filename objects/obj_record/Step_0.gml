@@ -15,6 +15,7 @@ else {
 	hovered = false;
 }
 if (recording) {
+	buffer = buffer_create(1024 * 768 * 4, buffer_fast, 1);
 	// WINDOWS
 	if (os_browser == browser_not_a_browser) {
 		if (frame_count == 0) {
@@ -31,12 +32,12 @@ if (recording) {
 	// HTML5
 	if (os_browser != browser_not_a_browser) {
 		gif_surf = surface_create(1024, 768);
+		
 		if (frame_count < max_frames + 1) {
 			surface_copy_part(gif_surf, 0, 0, application_surface, 342, 0, 1024, 768);
-			buffer = buffer_create(1024 * 768 * 4, buffer_fast, 1);
 			buffer_get_surface(buffer, gif_surf, 0);
 			stored_frames[frame_count] = buffer_get_address(buffer);
-			buffer_delete(buffer);
+			//buffer_delete(buffer);
 			show_debug_message(stored_frames[frame_count]);
 			frame_count++;
 		}
@@ -56,6 +57,7 @@ if (recording) {
 			save_gif_array(stored_frames, "test.gif", 0, 0, 1024, 768);
 			frame_count = 0;
 		}
+		buffer_delete(buffer);
 	}
 }
 

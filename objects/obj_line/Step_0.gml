@@ -21,11 +21,13 @@ if (making_col) {
 
 can_hover = (obj_draw_handler.state == obj_draw_handler.state_eraser || obj_draw_handler.state == obj_draw_handler.state_fill || obj_draw_handler.state == obj_draw_handler.state_eyedropper);
 
-for (i = 0; i < array_length(collision_objs); i++) {
-	if (can_hover && collision_point(mouse_x, mouse_y, collision_objs[i], true, true) && !selected && !obj_draw_handler.mouse_over_line) {
-		obj_draw_handler.mouse_line = self;
-		obj_draw_handler.mouse_over_line = true;
-		selected = true;
+if (!selected) {
+	for (i = 0; i < array_length(collision_objs); i++) {
+		if (can_hover && collision_point(mouse_x, mouse_y, collision_objs[i], true, true) && !obj_draw_handler.mouse_over_line) {
+			obj_draw_handler.mouse_line = self;
+			obj_draw_handler.mouse_over_line = true;
+			selected = true;
+		}
 	}
 }
 

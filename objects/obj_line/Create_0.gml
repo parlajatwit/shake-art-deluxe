@@ -10,8 +10,8 @@ sh_off = 0;
 line_width = 0;
 sh_spd = 0;
 
-col = make_color_hsv(0, 255, 255);
-inverse_col = make_color_hsv(255, 0, 0);
+col = c_black;
+inverse_col = c_white;
 
 selected = false;
 making_col = false;
@@ -21,5 +21,4 @@ collision_objs = [];
 
 timer = 0;
 
-depth = 0;
 

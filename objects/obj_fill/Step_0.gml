@@ -20,3 +20,9 @@ timer++;
 if (timer == 330) {
 	timer = 0;
 }
+if (hovered) {
+	depth = -5;
+}
+else {
+	depth = -1;
+}

@@ -11,3 +11,18 @@ else if (selected) {
 else {
 	draw_sprite_ext(spr_linetool, -1, x, y, 1, 1, 0, obj_draw_handler.color, 1);
 }
+
+if (hovered) {
+	draw_set_color(c_black);
+	tool_name = "Line";
+	tool_desc = "Draws a line. Left Click to add points to the line. Right Click to finish the line.";
+	draw_set_color(c_olive);
+	draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc), mouse_y + 50, false);
+	draw_set_color(c_black);
+	draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc), mouse_y + 50, true);
+	draw_set_font(munro);
+	draw_text(mouse_x + 15, mouse_y+2, tool_name);
+	draw_text(mouse_x + 16, mouse_y+2, tool_name);
+	draw_text(mouse_x + 15, mouse_y + 24, tool_desc);
+}
+

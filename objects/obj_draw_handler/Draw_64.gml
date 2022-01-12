@@ -8,5 +8,3 @@ draw_rectangle(43, 440, 298, 500, false);
 for (i = 0; i < array_length(settings_line.x_draw)-1; i++) {
 	draw_line_width_color(settings_line.x_draw[i], settings_line.y_draw[i], settings_line.x_draw[i+1], settings_line.y_draw[i+1], line_thickness, color, color);
 }
-
-draw_text(100, 100, string(undoindex));
