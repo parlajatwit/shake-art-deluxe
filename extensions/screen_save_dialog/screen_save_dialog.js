@@ -1,39 +1,5 @@
 	///
-	var encoder = null;
-	var canv = null;
-	function init_gifencoder_js(width, height) {
-		encoder = new GIFEncoder();
-		encoder.setRepeat(0);
-		encoder.setDelay(16);
-		encoder.setSize(width, height);
-		encoder.start();
-		canv = document.createElement("canvas");
-		canv.width = width;
-		canv.height = height;
-	}
-
-	///
-	function add_frame_js(abuf, awidth, aheight, x, y) {
-		var ctx = temp.getContext("2d");
-		var u8ca = new Uint8ClampedArray(abuf[i], 0, awidth * aheight * 4);
-		//console.log("before imagedata creation");
-		var imd = new ImageData(u8ca, awidth, aheight);
-		//console.log("after imagedata creation");
-		ctx.putImageData(imd, -x, -y);
-		//console.log("imd put in ctx");
-		encoder.addFrame(ctx);
-	}
-
-	///
-	function save_gif_js() {
-		encoder.finish();
-		encoder.download("output.gif");
-		encoder = null;
-		canv = null;
-	}
-
-	///
-	/*function save_gif_array_js(fname, abuf, awidth, aheight, x, y, width, height) {
+	function save_gif_array_js(fname, abuf, awidth, aheight, x, y, width, height) {
 		var encoder = new GIFEncoder();
 		encoder.setRepeat(0);
 		encoder.setDelay(16);
@@ -55,7 +21,7 @@
 		
 		encoder.finish();
 		encoder.download("output.gif");
-	}*/
+	}
 
 
 	/**

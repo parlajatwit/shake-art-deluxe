@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_camera",
-    "path": "sprites/spr_camera/spr_camera.yy",
+    "name": "spr_recording",
+    "path": "sprites/spr_recording/spr_recording.yy",
   },
   "solid": false,
   "visible": true,
