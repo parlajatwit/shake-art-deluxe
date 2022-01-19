@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_camera",
-    "path": "sprites/spr_camera/spr_camera.yy",
+    "name": "spr_handle",
+    "path": "sprites/spr_handle/spr_handle.yy",
   },
   "solid": false,
   "visible": true,
@@ -21,18 +21,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "tools",
-    "path": "folders/Objects/tools.yy",
+    "name": "hsv",
+    "path": "folders/Objects/hsv.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_record",
+  "name": "obj_offset",
   "tags": [],
   "resourceType": "GMObject",
 }
