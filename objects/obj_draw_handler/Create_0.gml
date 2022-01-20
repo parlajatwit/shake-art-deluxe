@@ -151,8 +151,7 @@ state_fill = function() {
 			instance_destroy(mouse_line.collision_objs[i]);
 		}
 		array_resize(mouse_line.collision_objs, 0);
-		undoredo[undoindex] = mouse_line;
-		undoindex++;
+
 		create_line();
 		for (i = 0; i < array_length(mouse_line.x_real); i++) {
 			current_line.x_real[i] = mouse_line.x_real[i];
@@ -220,6 +219,7 @@ function create_line() {
 		array_resize(undoredo, undoindex);
 	}
 	current_line.col = color;
+	current_line.inverse_col = color_inverse;
 	current_line.sh_spd = shake_speed;
 	current_line.sh_off = shake_offset;
 	current_line.line_width = line_thickness;
@@ -239,6 +239,7 @@ function create_line_noshake() {
 		array_resize(undoredo, undoindex);
 	}
 	current_line.col = color;
+	current_line.inverse_col = color_inverse;
 	current_line.line_width = line_thickness;
 	current_line.x_real[0] = mouse_x*mouse_offset+mouse_offset_additive;
 	current_line.y_real[0] = mouse_y*mouse_offset;

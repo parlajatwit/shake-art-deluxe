@@ -10,14 +10,14 @@ if (surface_exists(pixelSurface)) {
 		}
 	}
 	else if (array_length(x_real) > 1 && selected) {
-		//inverse_col = make_color_rgb(255 - color_get_red(col), 255 - color_get_green(col), 255 - color_get_blue(col));
-		inverse_col = make_color_hsv(color_get_hue(col), clamp(120 - color_get_saturation(col), 50, 255), color_get_value(col));
+		inverse_col_lim = make_color_hsv(color_get_hue(inverse_col), color_get_saturation(inverse_col), clamp(color_get_value(inverse_col), 25, 240));
 		for (i = 0; i < array_length(x_draw)-1; i++) {
-			draw_line_width_color(x_draw[i], y_draw[i], x_draw[i+1], y_draw[i+1], line_width, inverse_col, inverse_col);
-			draw_circle_color(x_draw[i], y_draw[i], line_width/2, inverse_col, inverse_col, false);
-			draw_circle_color(x_draw[i+1], y_draw[i+1], line_width/2, inverse_col, inverse_col, false);
+			draw_line_width_color(x_draw[i], y_draw[i], x_draw[i+1], y_draw[i+1], line_width, inverse_col_lim, inverse_col_lim);
+			draw_circle_color(x_draw[i], y_draw[i], line_width/2, inverse_col_lim, inverse_col_lim, false);
+			draw_circle_color(x_draw[i+1], y_draw[i+1], line_width/2, inverse_col_lim, inverse_col_lim, false);
 		}
-	}
+	} 
+	surface_reset_target();
 } else {
 	pixelSurface = surface_create(640, 480);
 }

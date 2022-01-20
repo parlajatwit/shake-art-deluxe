@@ -29,6 +29,7 @@ if (making_col) {
 			aabb_x2 = x_real[i+1];
 		if (y_real[i+1] < aabb_y1)
 			aabb_y1 = y_real[i+1];
+		
 		if (y_real[i+1] > aabb_y2)
 			aabb_y2 = y_real[i+1];
 	}
