@@ -67,8 +67,8 @@ state_draw_line = function() {
 		}
 	}
 	if (current_line != noone) {
-		current_line.x_real[curindex] = mouse_x;
-		current_line.y_real[curindex] = mouse_y;
+		current_line.x_real[curindex] = mouse_x*mouse_offset+mouse_offset_additive;
+		current_line.y_real[curindex] = mouse_y*mouse_offset;
 	}
 	if (mouse_check_button_pressed(mb_right) && current_line != noone) {
 		array_resize(current_line.x_real, array_length(current_line.x_real) - 1);

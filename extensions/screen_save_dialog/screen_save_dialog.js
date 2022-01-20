@@ -3,7 +3,7 @@
 		var encoder = new GIFEncoder();
 		encoder.setRepeat(0);
 		encoder.setDelay(16);
-		encoder.setSize(1024, 768);
+		encoder.setSize(640, 480);
 		encoder.start();
 		for (var i = 0; i < abuf.length; i++) {
 			var temp = document.createElement("canvas");
