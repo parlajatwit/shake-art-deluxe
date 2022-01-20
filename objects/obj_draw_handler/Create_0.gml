@@ -1,5 +1,7 @@
 if (live_call()) return live_result;
 
+depth = 0;
+
 curindex = 0;
 current_line = noone;
 
@@ -24,7 +26,7 @@ color_inverse_limited = make_color_hsv(color_get_hue(color_inverse), color_get_s
 
 settings_line = instance_create_depth(0, 0, 2, obj_settingsline);
 settings_line.x_real = [43, 170, 298];
-settings_line.y_real = [470, 470, 470];
+settings_line.y_real = [382, 382, 382];
 
 
 undoredo = [];
@@ -36,10 +38,10 @@ mouse_line = noone;
 surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 
 state_draw_line = function() {
-	if (mouse_wheel_up())
+	/*if (mouse_wheel_up())
 		shake_offset++;
 	if (mouse_wheel_down())
-		shake_offset--;
+		shake_offset--;*/
 	
 	if (mouse_check_button_pressed(mb_left)) {
 		if (current_line == noone) {

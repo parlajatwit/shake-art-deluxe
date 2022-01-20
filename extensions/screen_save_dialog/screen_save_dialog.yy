@@ -11,9 +11,9 @@
   "license": "Free to use, also for commercial games.",
   "description": "",
   "helpfile": "",
-  "iosProps": true,
+  "iosProps": false,
   "tvosProps": false,
-  "androidProps": true,
+  "androidProps": false,
   "installdir": "",
   "files": [
     {"filename":"screen_save_dialog.gml","origname":"extensions\\gml.gml","init":"","final":"","kind":2,"uncompress":false,"functions":[
@@ -53,6 +53,7 @@
         {"name":"surface_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"surface_save_part_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"save_gif_array","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
@@ -136,7 +137,7 @@
   "tvosThirdPartyFrameworkEntries": [],
   "IncludedResources": [],
   "androidPermissions": [],
-  "copyToTargets": 113497714299118,
+  "copyToTargets": 32,
   "iosCocoaPods": "",
   "tvosCocoaPods": "",
   "iosCocoaPodDependencies": "",

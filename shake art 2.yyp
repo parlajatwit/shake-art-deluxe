@@ -11,6 +11,7 @@
     {"id":{"name":"GMLive_tools","path":"scripts/GMLive_tools/GMLive_tools.yy",},"order":1,},
     {"id":{"name":"GMLive_compiler","path":"scripts/GMLive_compiler/GMLive_compiler.yy",},"order":1,},
     {"id":{"name":"spr_col","path":"sprites/spr_col/spr_col.yy",},"order":4,},
+    {"id":{"name":"obj_intens","path":"objects/obj_intens/obj_intens.yy",},"order":5,},
     {"id":{"name":"spr_linebehind","path":"sprites/spr_linebehind/spr_linebehind.yy",},"order":7,},
     {"id":{"name":"obj_linecol","path":"objects/obj_linecol/obj_linecol.yy",},"order":4,},
     {"id":{"name":"obj_undo","path":"objects/obj_undo/obj_undo.yy",},"order":5,},

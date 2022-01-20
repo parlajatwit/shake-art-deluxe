@@ -3,7 +3,7 @@ if (live_call()) return live_result;
 depth = -1;
 held = false;
 
-x = 43;
-y = 672;
+x = 80;
+y = 504;
 
-val = 0;
+val = 3;
