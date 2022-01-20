@@ -8,6 +8,10 @@ if (timer == 0) {
 	timer = sh_spd;
 }
 timer--;
+if (being_drawn && array_length(x_real) > 1) {
+	x_draw[array_length(x_real)-1] = x_real[array_length(x_real)-1];
+	y_draw[array_length(y_real)-1] = y_real[array_length(y_real)-1];
+}
 
 if (making_col) {
 	aabb_x1 = x_real[0];
@@ -39,9 +43,9 @@ if (making_col) {
 can_hover = (obj_draw_handler.state == obj_draw_handler.state_eraser || obj_draw_handler.state == obj_draw_handler.state_fill || obj_draw_handler.state == obj_draw_handler.state_eyedropper);
 
 if (!selected && can_hover) {
-	if (point_in_rectangle(mouse_x, mouse_y, aabb_x1, aabb_y1, aabb_x2, aabb_y2)) {
+	if (point_in_rectangle(mouse_x*5/8-213.75, mouse_y*5/8, aabb_x1, aabb_y1, aabb_x2, aabb_y2)) {
 		for (i = 0; i < array_length(collision_objs); i++) {
-			if (collision_point(mouse_x, mouse_y, collision_objs[i], true, true) && !obj_draw_handler.mouse_over_line) {
+			if (collision_point(mouse_x*5/8-213.75, mouse_y*5/8, collision_objs[i], true, true) && !obj_draw_handler.mouse_over_line) {
 				obj_draw_handler.mouse_line = self;
 				obj_draw_handler.mouse_over_line = true;
 				selected = true;
@@ -53,7 +57,7 @@ if (!selected && can_hover) {
 if (selected) {
 	still_selected = false;
 	for (i = 0; i < array_length(collision_objs); i++) {
-		if (can_hover && collision_point(mouse_x, mouse_y, collision_objs[i], true, true)) {
+		if (can_hover && collision_point(mouse_x*5/8-213.75, mouse_y*5/8, collision_objs[i], true, true)) {
 			still_selected = true;
 		}
 	}

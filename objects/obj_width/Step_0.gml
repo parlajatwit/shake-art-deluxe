@@ -6,5 +6,5 @@ if (mouse_check_button_released(mb_left))
 	held = false;
 if (held) {
 	x = clamp(mouse_x, 43, 298);
-	val = clamp((x - 43)/2.25, 1, 100);
+	val = clamp((x - 43)/4.5, 1, 60);
 }

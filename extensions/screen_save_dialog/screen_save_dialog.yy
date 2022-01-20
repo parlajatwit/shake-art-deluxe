@@ -47,12 +47,16 @@
             2,
             2,
           ],"resourceVersion":"1.0","name":"save_gif_array","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[],"ProxyFiles":[],"copyToTargets":9223372036854775807,"order":[
+      ],"constants":[],"ProxyFiles":[],"copyToTargets":32,"order":[
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_part_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"surface_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"surface_save_part_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"save_gif_array","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},

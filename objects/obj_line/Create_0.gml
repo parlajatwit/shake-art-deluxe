@@ -1,5 +1,8 @@
 if (live_call()) return live_result;
 
+
+being_drawn = true;
+
 x_draw = [];
 y_draw = [];
 

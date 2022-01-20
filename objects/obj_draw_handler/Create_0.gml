@@ -1,6 +1,20 @@
 if (live_call()) return live_result;
 
-depth = 0;
+//depth = 0;
+
+// at game start
+gameWidth=1366;
+gameHeight=768;
+surface_resize(application_surface, gameWidth, gameHeight);
+//application_surface_draw_enable(false); // i think
+
+mouse_offset = 5/8;
+mouse_offset_additive = -213.75;
+
+globalvar guiSurface;
+guiSurface = surface_create(1000, 768);
+globalvar pixelSurface;
+pixelSurface = surface_create(640, 480);
 
 curindex = 0;
 current_line = noone;
@@ -14,6 +28,8 @@ timer = 0;
 hue = 255;
 sat = 0;
 val = 255;
+
+bg_color = c_white;
 
 total_points = 0;
 
@@ -35,7 +51,6 @@ undoindex = 0;
 mouse_over_line = false;
 mouse_line = noone;
 
-surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 
 state_draw_line = function() {
 	/*if (mouse_wheel_up())
@@ -65,6 +80,7 @@ state_draw_line = function() {
 			array_resize(undoredo, array_length(undoredo) - 1);
 			undoindex--;
 		}
+		current_line.being_drawn = false;
 		current_line.making_col = true;
 		current_line = noone;
 		curindex = 0;
@@ -91,8 +107,8 @@ state_draw_freehand = function() {
 		selected = true;
 	}
 	if (mouse_check_button(mb_left) && selected) {
-		current_line.x_real[curindex] = mouse_x;
-		current_line.y_real[curindex] = mouse_y;
+		current_line.x_real[curindex] = mouse_x*mouse_offset+mouse_offset_additive;
+		current_line.y_real[curindex] = mouse_y*mouse_offset;
 		if (timer < 0) {
 			curindex++;
 			timer = freehand_delay;
@@ -101,6 +117,7 @@ state_draw_freehand = function() {
 	if (mouse_check_button_released(mb_left) && selected) {
 		timer = freehand_delay;
 		current_line.making_col = true;
+		current_line.being_drawn = false;
 		current_line = noone;
 		selected = false;
 	}
@@ -144,13 +161,15 @@ state_fill = function() {
 		current_line.making_col = true;
 		instance_deactivate_object(mouse_line);
 		mouse_over_line = false;
+		current_line.being_drawn = false;
 		current_line = noone;
 		mouse_line = noone;
 		filled_line = true;
 	}
 	
 	if (!mouse_over_line && mouse_check_button_pressed(mb_left) && !filled_line) {
-		layer_background_blend(0, color);
+		bg_color = color;
+		//layer_background_blend(0, color);
 	}
 }
 
@@ -173,8 +192,8 @@ state_linebehind = function() {
 		selected = true;
 	}
 	if (mouse_check_button(mb_left) && selected) {
-		current_line.x_real[curindex] = mouse_x;
-		current_line.y_real[curindex] = mouse_y;
+		current_line.x_real[curindex] = mouse_x*mouse_offset+mouse_offset_additive;
+		current_line.y_real[curindex] = mouse_y*mouse_offset;
 		if (timer < 0) {
 			curindex++;
 			timer = freehand_delay;
@@ -183,6 +202,7 @@ state_linebehind = function() {
 	if (mouse_check_button_released(mb_left) && selected) {
 		timer = freehand_delay;
 		current_line.making_col = true;
+		current_line.being_drawn = false;
 		current_line = noone;
 		selected = false;
 	}
@@ -190,7 +210,7 @@ state_linebehind = function() {
 
 function create_line() {
 	curindex = 1;
-	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line);
+	current_line = instance_create_depth(mouse_x*mouse_offset+mouse_offset_additive, mouse_y*mouse_offset, 2, obj_line);
 	current_line.depth = -undoindex;
 	undoredo[undoindex] = current_line;
 	undoindex++;
@@ -203,13 +223,13 @@ function create_line() {
 	current_line.sh_spd = shake_speed;
 	current_line.sh_off = shake_offset;
 	current_line.line_width = line_thickness;
-	current_line.x_real[0] = mouse_x;
-	current_line.y_real[0] = mouse_y;
+	current_line.x_real[0] = mouse_x*mouse_offset+mouse_offset_additive;
+	current_line.y_real[0] = mouse_y*mouse_offset;
 }
 
 function create_line_noshake() {
 	curindex = 1;
-	current_line = instance_create_depth(mouse_x, mouse_y, 2, obj_line_noshake);
+	current_line = instance_create_depth(mouse_x*mouse_offset+mouse_offset_additive, mouse_y*mouse_offset, 2, obj_line_noshake);
 	current_line.depth = undoindex;
 	undoredo[undoindex] = current_line;
 	undoindex++;
@@ -220,8 +240,8 @@ function create_line_noshake() {
 	}
 	current_line.col = color;
 	current_line.line_width = line_thickness;
-	current_line.x_real[0] = mouse_x;
-	current_line.y_real[0] = mouse_y;
+	current_line.x_real[0] = mouse_x*mouse_offset+mouse_offset_additive;
+	current_line.y_real[0] = mouse_y*mouse_offset;
 }
 
 function undo() {

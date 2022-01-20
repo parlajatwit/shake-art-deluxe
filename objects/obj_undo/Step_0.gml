@@ -21,3 +21,10 @@ if (timer < 0) {
 	timer = 0;
 	selected = false;
 }
+
+if (hovered) {
+	depth = -5;
+}
+else {
+	depth = -1;
+}
