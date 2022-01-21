@@ -38,6 +38,7 @@
     {"id":{"name":"obj_speed","path":"objects/obj_speed/obj_speed.yy",},"order":4,},
     {"id":{"name":"obj_fill","path":"objects/obj_fill/obj_fill.yy",},"order":9,},
     {"id":{"name":"GMLive_seekEval","path":"scripts/GMLive_seekEval/GMLive_seekEval.yy",},"order":5,},
+    {"id":{"name":"obj_total_intens","path":"objects/obj_total_intens/obj_total_intens.yy",},"order":6,},
     {"id":{"name":"spr_fill","path":"sprites/spr_fill/spr_fill.yy",},"order":13,},
     {"id":{"name":"GMLive_new","path":"scripts/GMLive_new/GMLive_new.yy",},"order":2,},
     {"id":{"name":"obj_hue","path":"objects/obj_hue/obj_hue.yy",},"order":0,},

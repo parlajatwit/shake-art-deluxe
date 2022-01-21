@@ -18,6 +18,7 @@ if (timer > 0) {
 	selected = true;
 }
 if (timer < 0) {
+	selected = false;
 	timer = 0;
 }
 

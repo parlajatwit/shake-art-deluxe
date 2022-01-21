@@ -6,7 +6,7 @@ if (surface_exists(guiSurface)) {
 		offset = abs(sin(timer/15));
 		draw_sprite_ext(spr_undo, -1, x, y, -1, 1, offset * 360, obj_draw_handler.color_limited, 1);
 	}
-	else if (obj_draw_handler.undoindex == array_length(obj_draw_handler.undoredo) && !selected) {
+	else if (obj_draw_handler.undoindex < array_length(obj_draw_handler.undoredo) && !selected) {
 		draw_sprite_ext(spr_undo, -1, x, y, -1, 1, 0, obj_draw_handler.color_limited, 0.6);	
 	}
 	else if (hovered && !selected && obj_draw_handler.undoindex < array_length(obj_draw_handler.undoredo)) {

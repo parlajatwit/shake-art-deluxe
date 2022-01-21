@@ -20,6 +20,7 @@ curindex = 0;
 current_line = noone;
 
 shake_offset = 2;
+total_intensity = 1;
 shake_speed = 1;
 line_thickness = 3;
 

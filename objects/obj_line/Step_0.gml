@@ -2,8 +2,8 @@ if (live_call()) return live_result;
 
 if (timer == 0) {
 	for (i = 0; i < array_length(x_real); i++) {
-		x_draw[i] = x_real[i] + random_range(-sh_off, sh_off);
-		y_draw[i] = y_real[i] + random_range(-sh_off, sh_off);
+		x_draw[i] = x_real[i] + random_range(-sh_off, sh_off)*obj_draw_handler.total_intensity;
+		y_draw[i] = y_real[i] + random_range(-sh_off, sh_off)*obj_draw_handler.total_intensity;
 	}
 	timer = sh_spd;
 }

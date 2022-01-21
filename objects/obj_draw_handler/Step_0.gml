@@ -14,6 +14,7 @@ color_inverse_limited = make_color_hsv(color_get_hue(color_inverse), color_get_s
 
 shake_offset = obj_intens.val;
 shake_speed = obj_speed.val;
+total_intensity = obj_total_intens.val;
 
 settings_line.sh_off = shake_offset;
 settings_line.sh_spd = shake_speed;
