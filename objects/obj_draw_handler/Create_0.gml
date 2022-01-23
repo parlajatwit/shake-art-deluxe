@@ -9,10 +9,12 @@ gameHeight=768;
 surface_resize(application_surface, gameWidth, gameHeight);
 //application_surface_draw_enable(false); // i think
 
-audio_stop_all();
-audio_play_sound(chill2, 1000, 1);
-audio_set_master_gain(0, 0.4);
-
+music_playing = false;
+if (audio_system_is_available() && !music_playing) {	
+	audio_play_sound(chill2, 1000, 1);
+	audio_set_master_gain(0, 0.4);
+	music_playing = true;
+}
 
 mouse_offset = 5/8;
 mouse_offset_additive = -213.75;
@@ -145,10 +147,6 @@ state_draw_freehand = function() {
 		selected = false;
 	}
 
-	
-	if (keyboard_check(ord("R"))) {
-		room_restart();
-	}
 }
 
 state_eraser = function() {
@@ -174,7 +172,7 @@ state_fill = function() {
 			instance_destroy(mouse_line.collision_objs[i]);
 		}
 		array_resize(mouse_line.collision_objs, 0);
-
+		
 		create_line();
 		for (i = 0; i < array_length(mouse_line.x_real); i++) {
 			current_line.x_real[i] = mouse_line.x_real[i];
@@ -253,7 +251,7 @@ function create_line() {
 function create_line_noshake() {
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x*mouse_offset+mouse_offset_additive, mouse_y*mouse_offset, 2, obj_line_noshake);
-	current_line.depth = undoindex;
+	current_line.depth = -undoindex+1000;
 	undoredo[undoindex] = current_line;
 	undoindex++;
 	if (undoindex < array_length(undoredo)) {

@@ -15,14 +15,16 @@ if (surface_exists(guiSurface)) {
 		draw_set_color(c_black);
 		tool_name = "Undo";
 		tool_desc = "Undoes.";
+		tool_desc2 = "Press R to clear the canvas.";
 		draw_set_color(c_olive);
-		draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc), mouse_y + 50, false);
+		draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc2), mouse_y + 75, false);
 		draw_set_color(c_black);
-		draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc), mouse_y + 50, true);
+		draw_rectangle(mouse_x + 10, mouse_y, mouse_x + 18 + string_width(tool_desc2), mouse_y + 75, true);
 		draw_set_font(munro);
 		draw_text(mouse_x + 15, mouse_y + 2, tool_name);
 		draw_text(mouse_x + 16, mouse_y + 2, tool_name);
 		draw_text(mouse_x + 15, mouse_y + 24, tool_desc);
+		draw_text(mouse_x + 15, mouse_y + 46, tool_desc2);
 	}
 	else {
 		draw_sprite_ext(spr_undo, -1, x, y, 1, 1, 0, obj_draw_handler.color_limited, 1);

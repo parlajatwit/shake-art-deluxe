@@ -57,7 +57,12 @@ if (recording) {
 	}
 }
 
-
+if (hovered) {
+	depth = -5;
+}
+else {
+	depth = -1;
+}
 
 
 timer++;

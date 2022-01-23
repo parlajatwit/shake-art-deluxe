@@ -3,6 +3,12 @@ if (live_call()) return live_result;
 if (mouse_x > 342)
 	state();
 
+if (audio_system_is_available() && !music_playing) {	
+	audio_play_sound(chill2, 1000, 1);
+	audio_set_master_gain(0, 0.4);
+	music_playing = true;
+}
+
 hue = obj_hue.val;
 sat = obj_sat.val;
 val = obj_val.val;
@@ -29,4 +35,9 @@ if (keyboard_check(vk_control) && keyboard_check_pressed(ord("Z"))) {
 }
 if (keyboard_check(vk_control) && keyboard_check_pressed(ord("Y")) && undoindex < array_length(undoredo)) {
 	redo();
+}
+
+if (keyboard_check(ord("R"))) {
+	audio_stop_all();
+	room_restart();
 }

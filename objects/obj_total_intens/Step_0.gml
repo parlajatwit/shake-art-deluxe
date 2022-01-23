@@ -8,3 +8,8 @@ if (held) {
 	x = clamp(mouse_x, 43, 298);
 	val = clamp((x - 43)/6.375, 0, 39);
 }
+if (point_in_rectangle(mouse_x, mouse_y, 43, 466, 298, 488)) {
+	hovered = true;
+} else {
+	hovered = false;
+}
