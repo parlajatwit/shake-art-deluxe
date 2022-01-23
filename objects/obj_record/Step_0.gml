@@ -43,7 +43,10 @@ if (recording) {
 		// WINDWOS
 		if (os_browser == browser_not_a_browser) {	
 			recording = false;
-			gif_save(gif_image, "test.gif");
+			file = get_save_filename("gif|*.gif", "output");
+			if (file != "") {
+				gif_save(gif_image, file);
+			}
 			frame_count = 0;
 		}
 	
