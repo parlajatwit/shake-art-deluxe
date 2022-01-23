@@ -3,10 +3,16 @@ if (live_call()) return live_result;
 //depth = 0;
 
 // at game start
+draw_set_halign(fa_left);
 gameWidth=1366;
 gameHeight=768;
 surface_resize(application_surface, gameWidth, gameHeight);
 //application_surface_draw_enable(false); // i think
+
+audio_stop_all();
+audio_play_sound(chill2, 1000, 1);
+audio_set_master_gain(0, 0.4);
+
 
 mouse_offset = 5/8;
 mouse_offset_additive = -213.75;
@@ -26,9 +32,9 @@ line_thickness = 3;
 
 timer = 0;
 
-hue = 255;
-sat = 0;
-val = 255;
+hue = 168;
+sat = 107;
+val = 168;
 
 bg_color = c_white;
 
@@ -52,6 +58,8 @@ undoindex = 0;
 mouse_over_line = false;
 mouse_line = noone;
 
+endline_check = false;
+
 
 state_draw_line = function() {
 	/*if (mouse_wheel_up())
@@ -59,9 +67,11 @@ state_draw_line = function() {
 	if (mouse_wheel_down())
 		shake_offset--;*/
 	
-	if (mouse_check_button_pressed(mb_left)) {
+	
+	if (mouse_check_button_pressed(mb_left) && !endline_check) {
 		if (current_line == noone) {
 			create_line();
+			instance_activate_object(obj_endLine);
 		}
 		else {
 			curindex++;
@@ -70,8 +80,20 @@ state_draw_line = function() {
 	if (current_line != noone) {
 		current_line.x_real[curindex] = mouse_x*mouse_offset+mouse_offset_additive;
 		current_line.y_real[curindex] = mouse_y*mouse_offset;
+		if (curindex > 1) {
+			obj_endLine.x = current_line.x_real[curindex-1];
+			obj_endLine.y = clamp(current_line.y_real[curindex-1] + 100, 0, 480);
+			if (mouse_x*5/8-213.75 > obj_endLine.x - 16 && mouse_x*5/8-213.75 < obj_endLine.x + 16) {
+				if (mouse_y*5/8 > obj_endLine.y - 16 && mouse_y*5/8 < obj_endLine.y + 16) {
+					endline_check = true;
+				}
+			} else {
+				endline_check = false;
+			}
+		}
 	}
-	if (mouse_check_button_pressed(mb_right) && current_line != noone) {
+	
+	if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left) && endline_check) && current_line != noone) {
 		array_resize(current_line.x_real, array_length(current_line.x_real) - 1);
 		array_resize(current_line.y_real, array_length(current_line.y_real) - 1);
 		array_resize(current_line.x_draw, array_length(current_line.x_draw) - 1);
@@ -81,14 +103,14 @@ state_draw_line = function() {
 			array_resize(undoredo, array_length(undoredo) - 1);
 			undoindex--;
 		}
-		current_line.being_drawn = false;
-		current_line.making_col = true;
-		current_line = noone;
-		curindex = 0;
-	}
-	
-	if (keyboard_check(ord("R"))) {
-		room_restart();
+		if (current_line != noone) {
+			current_line.being_drawn = false;
+			current_line.making_col = true;
+			current_line = noone;
+			curindex = 0;
+		}
+		instance_deactivate_object(obj_endLine);
+		endline_check = false;
 	}
 }
 

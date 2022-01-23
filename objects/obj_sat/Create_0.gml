@@ -6,4 +6,4 @@ held = false;
 x = 43;
 y = 672;
 
-val = 0;
+val = 107;
