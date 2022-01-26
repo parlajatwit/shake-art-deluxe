@@ -41,3 +41,23 @@ if (keyboard_check(ord("R"))) {
 	audio_stop_all();
 	room_restart();
 }
+
+// beyond mad that i have to add this
+if (drawing_line && state != state_draw_line) {
+	array_resize(current_line.x_real, array_length(current_line.x_real) - 1);
+	array_resize(current_line.y_real, array_length(current_line.y_real) - 1);
+	array_resize(current_line.x_draw, array_length(current_line.x_draw) - 1);
+	array_resize(current_line.y_draw, array_length(current_line.y_draw) - 1);
+	if (array_length(current_line.x_real) == 1) {
+		instance_destroy(current_line);
+		array_resize(undoredo, array_length(undoredo) - 1);
+		undoindex--;
+	}
+	if (current_line != noone) {
+		current_line.being_drawn = false;
+		current_line.making_col = true;
+		current_line = noone;
+		curindex = 0;
+	}
+	drawing_line = false;
+}

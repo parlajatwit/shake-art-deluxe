@@ -8,7 +8,7 @@ if (surface_exists(guiSurface)) {
 	draw_rectangle(43, 600, 298, 616, true);
 	draw_sprite_stretched(spr_handle, -1, x - 8, y, 16, 32);
 	
-	if (hovered) {
+	if (hovered && !held) {
 		draw_set_color(c_black);
 		tool_name = "Width";
 		tool_desc = "Changes the width of the line to be drawn.";

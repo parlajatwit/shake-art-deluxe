@@ -8,7 +8,7 @@ if (surface_exists(guiSurface)) {
 	draw_rectangle(43, 512, 298, 530, true);
 	draw_sprite_stretched(spr_handle, -1, x - 8, y, 16, 32);
 	
-	if (hovered) {
+	if (hovered && !held) {
 		draw_set_color(c_black);
 		tool_name = "Intensity";
 		tool_desc = "Changes the intensity of the line to be drawn.";

@@ -8,7 +8,7 @@ if (surface_exists(guiSurface)) {
 	draw_rectangle(43, 556, 298, 572, true);
 	draw_sprite_stretched(spr_handle, -1, x - 8, y, 16, 32);
 	
-	if (hovered) {
+	if (hovered && !held) {
 		draw_set_color(c_black);
 		tool_name = "Speed";
 		tool_desc = "Changes the refresh speed of the line to be drawn.";

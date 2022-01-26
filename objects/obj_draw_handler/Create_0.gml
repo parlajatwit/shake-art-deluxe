@@ -60,7 +60,8 @@ undoindex = 0;
 mouse_over_line = false;
 mouse_line = noone;
 
-endline_check = false;
+//endline_check = false;
+drawing_line = false; // stupid thing needed to fix troglodytes switching out of the line tool
 
 
 state_draw_line = function() {
@@ -70,10 +71,11 @@ state_draw_line = function() {
 		shake_offset--;*/
 	
 	
-	if (mouse_check_button_pressed(mb_left) && !endline_check) {
+	if (mouse_check_button_pressed(mb_left)) { //&& !endline_check) {
 		if (current_line == noone) {
 			create_line();
-			instance_activate_object(obj_endLine);
+			drawing_line = true;
+			//instance_activate_object(obj_endLine);
 		}
 		else {
 			curindex++;
@@ -82,7 +84,7 @@ state_draw_line = function() {
 	if (current_line != noone) {
 		current_line.x_real[curindex] = mouse_x*mouse_offset+mouse_offset_additive;
 		current_line.y_real[curindex] = mouse_y*mouse_offset;
-		if (curindex > 1) {
+		/*if (curindex > 1) {
 			obj_endLine.x = current_line.x_real[curindex-1];
 			obj_endLine.y = clamp(current_line.y_real[curindex-1] + 100, 0, 480);
 			if (mouse_x*5/8-213.75 > obj_endLine.x - 16 && mouse_x*5/8-213.75 < obj_endLine.x + 16) {
@@ -92,10 +94,11 @@ state_draw_line = function() {
 			} else {
 				endline_check = false;
 			}
-		}
+		}*/
 	}
 	
-	if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left) && endline_check) && current_line != noone) {
+	//if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left) && endline_check) && current_line != noone) {
+	if ((mouse_check_button_pressed(mb_right) ) && current_line != noone) {
 		array_resize(current_line.x_real, array_length(current_line.x_real) - 1);
 		array_resize(current_line.y_real, array_length(current_line.y_real) - 1);
 		array_resize(current_line.x_draw, array_length(current_line.x_draw) - 1);
@@ -111,8 +114,8 @@ state_draw_line = function() {
 			current_line = noone;
 			curindex = 0;
 		}
-		instance_deactivate_object(obj_endLine);
-		endline_check = false;
+		//instance_deactivate_object(obj_endLine);
+		//endline_check = false;
 	}
 }
 
@@ -231,7 +234,7 @@ state_linebehind = function() {
 function create_line() {
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x*mouse_offset+mouse_offset_additive, mouse_y*mouse_offset, 2, obj_line);
-	current_line.depth = -undoindex;
+	current_line.depth = -undoindex-1;
 	undoredo[undoindex] = current_line;
 	undoindex++;
 	if (undoindex < array_length(undoredo)) {
@@ -251,7 +254,7 @@ function create_line() {
 function create_line_noshake() {
 	curindex = 1;
 	current_line = instance_create_depth(mouse_x*mouse_offset+mouse_offset_additive, mouse_y*mouse_offset, 2, obj_line_noshake);
-	current_line.depth = -undoindex+1000;
+	current_line.depth = -undoindex * 0.001;
 	undoredo[undoindex] = current_line;
 	undoindex++;
 	if (undoindex < array_length(undoredo)) {

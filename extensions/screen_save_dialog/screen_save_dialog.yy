@@ -72,6 +72,10 @@
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
         {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
+        {"name":"screen_save_dialog","path":"extensions/screen_save_dialog/screen_save_dialog.yy",},
       ],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
     {"filename":"screen_save_dialog.js","origname":"extensions\\js.js","init":"","final":"","kind":5,"uncompress":false,"functions":[
         {"externalName":"screen_save_dialog_js","kind":5,"help":"screen_save_dialog_js(fname, id)","hidden":false,"returnType":2,"argCount":2,"args":[
